@@ -1,0 +1,13 @@
+.price {
+  color: #555;
+  margin: 3px auto;
+  font-size: 0.85em;
+}
+
+.delete {
+  font-size: 0.85em;
+}
+
+.book {
+  margin-bottom: 8px;
+}
