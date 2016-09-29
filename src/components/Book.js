@@ -1,6 +1,7 @@
 import React from 'react';
+import Author from './Author';
 
-const Book = ({ book, handleDelete }) => {
+const Book = ({ book, author, handleDelete }) => {
   const handleClick = (event) => {
     event.preventDefault();
     handleDelete(book.id);
@@ -18,6 +19,7 @@ const Book = ({ book, handleDelete }) => {
       <div className="title">
         {book.title}
       </div>
+      <Author {...author} />
       <div className="price">
         {formatPrice(book.price)}
       </div>

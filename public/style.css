@@ -4,6 +4,11 @@
   font-size: 0.85em;
 }
 
+.Author {
+  margin: 3px auto;
+  font-style: italic;
+}
+
 .delete {
   font-size: 0.85em;
 }
