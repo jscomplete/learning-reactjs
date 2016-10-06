@@ -4,6 +4,7 @@ import Book from './Book';
 import Form from './Form';
 
 import configureStore from '../store';
+import * as actions from '../actions';
 
 class BookList extends React.Component {
   constructor(props) {
@@ -12,11 +13,13 @@ class BookList extends React.Component {
     this.state = this.store.getState();
   }
   componentDidMount() {
-    // fetch("http://localhost:8000/api/books")
-    //   .then(response => response.json())
-    //   .then(books => {
-    //     this.setState({ books })
-    //   });
+    this.unsubscribe = this.store.subscribe(() => {
+      this.setState(this.store.getState());
+    });
+    actions.fetchBooks(this.store.dispatch);
+  }
+  componentWillUnmount() {
+    this.unsubscribe();
   }
   deleteBook = (id) => {
     // const currentBooks = this.state.books;
