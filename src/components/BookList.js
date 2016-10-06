@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Book from './Book';
+import Form from './Form';
 
 class BookList extends React.Component {
   constructor(props) {
@@ -11,6 +13,15 @@ class BookList extends React.Component {
     const books = currentBooks.filter(book => book.id !== id);
 
     this.setState({ books });
+  };
+  addBook = (title, price) => {
+    this.setState({
+      books: this.state.books.concat({
+        id: Date.now(),
+        title,
+        price
+      })
+    });
   };
   render() {
     return (
@@ -24,6 +35,7 @@ class BookList extends React.Component {
             />
           );
         })}
+        <Form addBookAction={this.addBook} />
       </ul>
     );
   }
