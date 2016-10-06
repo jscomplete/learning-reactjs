@@ -3,12 +3,10 @@ export const receiveBooks = (books) => ({
   books
 });
 
-// special
-
-export const fetchBooks = (dispatch) => {
-  fetch("http://localhost:8000/api/books")
+export const fetchBooks = () => {
+  return fetch("http://localhost:8000/api/books")
     .then(response => response.json())
     .then(books => {
-      dispatch(receiveBooks(books))
+      return receiveBooks(books);
     });
-}
+};
