@@ -25,13 +25,7 @@ class BookList extends React.Component {
     this.store.dispatch(actions.deleteBook(id));
   };
   addBook = (title, price) => {
-    // this.setState({
-    //   books: this.state.books.concat({
-    //     id: Date.now(),
-    //     title,
-    //     price
-    //   })
-    // });
+    this.store.dispatch(actions.addBook(title, price));
   };
   render() {
     return (

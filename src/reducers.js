@@ -12,6 +12,11 @@ const mainReducer = (state = {}, action) => {
           book.id !== action.bookId
         )
       };
+    case 'ADD_BOOK':
+      return {
+        ...state,
+        books: state.books.concat(action.newBook)
+      };
     default:
       return state;
   }

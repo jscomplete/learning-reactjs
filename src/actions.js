@@ -27,3 +27,23 @@ export const deleteBook = bookId => {
       };
     });
 };
+
+export const addBook = (title, price) => {
+  return fetch("http://localhost:8000/api/books", {
+    method: 'POST',
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify({
+       title,
+       price
+     })
+  }).then(response => response.json())
+    .then(newBook => {
+      return {
+        type: 'ADD_BOOK',
+        newBook
+      };
+    });
+};
