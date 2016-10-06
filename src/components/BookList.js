@@ -6,7 +6,20 @@ import Form from './Form';
 class BookList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { books: this.props.books };
+    this.state = { books: [], authors: {} };
+  }
+  componentDidMount() {
+    fetch("http://localhost:8000/api/books")
+      .then(response => response.json())
+      .then(books => {
+        this.setState({ books })
+      });
+    fetch("http://localhost:8000/api/authors")
+      .then(response => response.json())
+      .then(authors => {
+        this.setState({ authors })
+      });
+
   }
   deleteBook = (id) => {
     const currentBooks = this.state.books;
@@ -31,7 +44,7 @@ class BookList extends React.Component {
             <Book
               key={book.id}
               book={book}
-              author={this.props.authors[book.authorId]}
+              author={this.state.authors[book.authorId]}
               handleDelete={this.deleteBook}
             />
           );
