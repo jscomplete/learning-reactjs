@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 
 class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { titleValue: '' };
+  }
+
   static propTypes = {
     addBookAction: PropTypes.func.isRequired
   };
@@ -9,14 +14,23 @@ class Form extends Component {
     event.preventDefault();
 
     this.props.addBookAction(
-      document.getElementById("titleInput").value
+      this.state.titleValue
     );
+
+    this.setState({ titleValue: '' });
+  };
+
+  handleTitleChange = (event) => {
+    this.setState({ titleValue: event.target.value });
   };
 
   render() {
     return (
       <div className="Form">
-        <input type="text" placeholder="Book title" id="titleInput" />
+        <input type="text" placeholder="Book title"
+               value={this.state.titleValue}
+               onChange={this.handleTitleChange}
+        />
         <button onClick={this.handleButtonClick}>
           Add Book
         </button>
