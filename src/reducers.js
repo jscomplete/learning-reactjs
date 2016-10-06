@@ -5,6 +5,13 @@ const mainReducer = (state = {}, action) => {
         ...state,
         books: action.books
       };
+    case 'DELETE_BOOK':
+      return {
+        ...state,
+        books: state.books.filter(book =>
+          book.id !== action.bookId
+        )
+      };
     default:
       return state;
   }

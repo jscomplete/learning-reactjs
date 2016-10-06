@@ -22,10 +22,7 @@ class BookList extends React.Component {
     this.unsubscribe();
   }
   deleteBook = (id) => {
-    // const currentBooks = this.state.books;
-    // const books = currentBooks.filter(book => book.id !== id);
-    //
-    // this.setState({ books });
+    this.store.dispatch(actions.deleteBook(id));
   };
   addBook = (title, price) => {
     // this.setState({

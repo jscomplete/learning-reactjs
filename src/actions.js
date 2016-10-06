@@ -10,3 +10,20 @@ export const fetchBooks = () => {
       return receiveBooks(books);
     });
 };
+
+export const deleteBook = bookId => {
+  return fetch(`http://localhost:8000/api/books/${bookId}`, {
+    method: 'DELETE',
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify({})
+  }).then(response => response.json())
+    .then(ok => {
+      return {
+        type: 'DELETE_BOOK',
+        bookId
+      };
+    });
+};
